@@ -12,6 +12,6 @@ router.post("/login",loginUser);
 
 
 // GET /auth/logout - Handles logout
-router.post("/logout",logoutUser);
+router.get("/logout",logoutUser);
 
 export default router;
