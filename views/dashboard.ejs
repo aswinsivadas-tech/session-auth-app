@@ -1,12 +1,17 @@
 <%- include("partials/header") %>
 
-<main>
-  <h2>Dashboard</h2>
-  
-  <!-- The crucial part: Does the session variable actually render here? -->
-  <p>Welcome back, <strong><%= user %></strong>!</p>
-  
-  <p>You are in the secure area. Only authenticated users can see this.</p>
-</main>
+<div class="row justify-content-center mt-4">
+  <div class="col-md-8">
+    <div class="glass-card p-5 shadow-lg text-center">
+      <h2 class="mb-4 fw-bold text-white">Hi, <%= user %> 👋</h2>
+      <p class="text-white-50 fs-5 mb-5">
+        Welcome to your secure dashboard. This page is protected by Express middleware, meaning only authenticated users can see this!
+      </p>
+      
+      <!-- ADDED: The Javascript confirmation dialog -->
+      <!-- <a href="/auth/logout" class="btn btn-danger px-4 py-2 fw-bold" onclick="return confirm('Are you sure you want to logout?');">Logout Session</a> -->
+    </div>
+  </div>
+</div>
 
 <%- include("partials/footer") %>

@@ -5,31 +5,26 @@
     <div class="glass-card p-5 shadow-lg text-center">
       <h2 class="fw-bold mb-4 text-white">Welcome Back</h2>
       
-      <!-- ADDED: The Error Message Box -->
-      <% if (error) { %>
+      <!-- RED BOX: For wrong passwords -->
+      <% if (locals.error) { %>
         <div class="alert alert-danger fw-bold shadow-sm" role="alert">
           <%= error %>
+        </div>
+      <% } %>
+
+      <!-- GREEN BOX: For successful logout -->
+      <% if (locals.success) { %>
+        <div class="alert alert-success fw-bold shadow-sm" role="alert">
+          <%= success %>
         </div>
       <% } %>
       
       <form action="/auth/login" method="POST">
         <div class="mb-3">
-          <input
-            type="text"
-            class="form-control form-control-lg"
-            name="username"
-            placeholder="Username"
-            required
-          />
+          <input type="text" class="form-control form-control-lg" name="username" placeholder="Username " required />
         </div>
         <div class="mb-4">
-          <input
-            type="password"
-            class="form-control form-control-lg"
-            name="password"
-            placeholder="Password"
-            required
-          />
+          <input type="password" class="form-control form-control-lg" name="password" placeholder="Password " required />
         </div>
         <button type="submit" class="btn btn-gradient w-100 btn-lg">Login</button>
       </form>

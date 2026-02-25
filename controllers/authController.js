@@ -1,52 +1,46 @@
 // GET /auth/login
 export const showLogin = (req, res) => {
-  // If they are already logged in, send them to the dashboard
   if (req.session.user) return res.redirect("/dashboard");
   
-  // 1. Grab the error from the session (if there is one)
+  // 1. Check for Session Errors (Wrong password/username)
   const errorMessage = req.session.error || null;
-  
-  // 2. Clear the error immediately so it doesn't get stuck there forever
   req.session.error = null;
   
-  // 3. Pass the error down to the EJS template
-  res.render("login", { user: null, error: errorMessage }); 
+  // 2. Check for Logout Success (Looking at the URL for ?logout=true)
+  let successMessage = null;
+  if (req.query.logout === "true") {
+    successMessage = "👋 Come back soon! You have been securely logged out.";
+  }
+  
+  // 3. Pass both to the EJS template
+  res.render("login", { user: null, error: errorMessage, success: successMessage }); 
 };
 
 // POST /auth/login
 export const loginUser = (req, res) => {
   const { username, password } = req.body;
-  
   const VALID_USER = "admin";
   const VALID_PASS = "123";
 
-  // Check 1: Is the username wrong?
   if (username !== VALID_USER) {
     req.session.error = "❌ User does not exist.";
-    // We MUST use req.session.save() here to prevent a race condition!
-    return req.session.save(() => {
-      res.redirect("/auth/login"); 
-    });
+    return req.session.save(() => res.redirect("/auth/login"));
   }
 
-  // Check 2: Is the password wrong?
   if (password !== VALID_PASS) {
     req.session.error = "❌ Incorrect password.";
-    return req.session.save(() => {
-      res.redirect("/auth/login"); 
-    });
+    return req.session.save(() => res.redirect("/auth/login"));
   }
 
-  // Success: Log them in!
   req.session.user = username;
-  req.session.save(() => {
-    res.redirect("/dashboard");
-  });
+  req.session.save(() => res.redirect("/dashboard"));
 };
 
 // GET /auth/logout
 export const logoutUser = (req, res) => {
+  // Destroy the session entirely
   req.session.destroy(() => {
-    res.redirect("/auth/login");
+    // Redirect to login, but add a query string to the URL!
+    res.redirect("/auth/login?logout=true");
   });
 };
