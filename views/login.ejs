@@ -5,6 +5,13 @@
     <div class="glass-card p-5 shadow-lg text-center">
       <h2 class="fw-bold mb-4 text-white">Welcome Back</h2>
       
+      <!-- ADDED: The Error Message Box -->
+      <% if (error) { %>
+        <div class="alert alert-danger fw-bold shadow-sm" role="alert">
+          <%= error %>
+        </div>
+      <% } %>
+      
       <form action="/auth/login" method="POST">
         <div class="mb-3">
           <input
@@ -15,7 +22,6 @@
             required
           />
         </div>
-        <!-- Added Password Field -->
         <div class="mb-4">
           <input
             type="password"
