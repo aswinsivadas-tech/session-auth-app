@@ -1,0 +1,45 @@
+/* Background */
+body {
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.bg-gradient {
+  background: linear-gradient(45deg, orange, #ff4b2b);
+  box-shadow: 0 4px 15px rgba(255, 0, 204, 0.3);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #e0e0e0;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Buttons */
+.btn-gradient {
+  background: linear-gradient(45deg, #00f260, #0575e6);
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 0.6rem;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #00f260;
+  opacity: 0.95;
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+}
