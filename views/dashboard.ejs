@@ -1,0 +1,12 @@
+<%- include("partials/header") %>
+
+<main>
+  <h2>Dashboard</h2>
+  
+  <!-- The crucial part: Does the session variable actually render here? -->
+  <p>Welcome back, <strong><%= user %></strong>!</p>
+  
+  <p>You are in the secure area. Only authenticated users can see this.</p>
+</main>
+
+<%- include("partials/footer") %>

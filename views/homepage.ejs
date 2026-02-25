@@ -1,0 +1,14 @@
+<%- include("partials/header.ejs") %>
+
+<div class="hero text-center py-5 mt-5">
+  <h1 class="display-4 fw-bold">Welcome to AuthApp</h1>
+  <p class="lead">A clean, minimal boilerplate for Node.js session-based authentication.</p>
+  
+  <% if (!user) { %>
+    <a href="/auth/login" class="btn btn-gradient btn-lg mt-3">Get Started</a>
+  <% } else { %>
+    <a href="/dashboard" class="btn btn-gradient btn-lg mt-3">Go to Dashboard</a>
+  <% } %>
+</div>
+
+<%- include("partials/footer.ejs") %>
