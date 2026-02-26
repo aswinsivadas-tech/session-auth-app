@@ -20,7 +20,7 @@ export const showLogin = (req, res) => {
 export const loginUser = (req, res) => {
   const { username, password } = req.body;
   const VALID_USER = "admin";
-  const VALID_PASS = "123";
+  const VALID_PASS = "12345";
 
   if (username !== VALID_USER) {
     req.session.error = "❌ User does not exist.";
